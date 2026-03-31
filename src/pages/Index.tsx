@@ -1,7 +1,7 @@
 import { useState } from "react"
 import GradientBlinds from "@/components/GradientBlinds"
 import Navbar from "@/components/Navbar"
-import func2url from "@/func2url.json"
+import func2url from "../../func2url.json"
 
 const features = [
   {
