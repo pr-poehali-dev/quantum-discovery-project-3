@@ -68,24 +68,24 @@ const reviews = [
 
 const galleryImages = [
   {
-    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/484d856f-3512-4dd6-ada2-10bf3f767a0d.JPG",
-    alt: "Бассейн лагеря",
+    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/7ff412ab-ea6a-458f-b4e5-96364fbbaf83.png",
+    alt: "Черноморский пляж",
   },
   {
-    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/files/31d23729-a0db-4a57-9e83-3a64d79d3eb3.jpg",
-    alt: "Активности на море",
+    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/c1ab0d43-3455-450c-bbf3-e7c0ebd5d932.png",
+    alt: "Спортивные тренировки",
   },
   {
-    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/files/567e6711-b5b3-41bf-acd9-baa01d6fa2b4.jpg",
-    alt: "Утренняя зарядка",
-  },
-  {
-    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/files/dfd6d0ba-6b17-4ce6-81d6-a709bf867947.jpg",
-    alt: "Экскурсии в горы",
-  },
-  {
-    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/files/e6fd8b19-371a-4c04-a125-596a7ae179d1.jpg",
+    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/34ff9c76-d053-4baa-9124-3929835612e9.jpg",
     alt: "Питание в лагере",
+  },
+  {
+    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/1e5b84a2-3bc8-4ef7-ad9a-00fbc9dd91d5.jpg",
+    alt: "Верёвочный парк",
+  },
+  {
+    url: "https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/d3059cb0-d588-440d-a43b-6b909591436f.JPG",
+    alt: "Территория лагеря",
   },
 ]
 
