@@ -1,6 +1,7 @@
 import { useState } from "react"
 import GradientBlinds from "@/components/GradientBlinds"
 import Navbar from "@/components/Navbar"
+import func2url from "@/func2url.json"
 
 const features = [
   {
@@ -122,6 +123,28 @@ const extras = [
 
 const Index = () => {
   const [activePhoto, setActivePhoto] = useState<string | null>(null)
+  const [form, setForm] = useState({ name: '', phone: '', comment: '' })
+  const [formState, setFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormState('loading')
+    try {
+      const res = await fetch(func2url.applications, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setFormState('success')
+        setForm({ name: '', phone: '', comment: '' })
+      } else {
+        setFormState('error')
+      }
+    } catch {
+      setFormState('error')
+    }
+  }
 
   return (
     <main className="relative min-h-screen overflow-x-hidden">
@@ -365,6 +388,74 @@ const Index = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ========== APPLICATION FORM ========== */}
+      <section id="application" className="relative bg-slate-900 py-20 px-5">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest">Оставьте заявку</span>
+            <h2 className="text-4xl font-bold text-white mt-2">Забронировать место</h2>
+            <p className="text-white/50 mt-3">Оставьте имя и номер — мы перезвоним и расскажем обо всех деталях</p>
+          </div>
+
+          {formState === 'success' ? (
+            <div className="rounded-3xl border border-cyan-500/30 bg-cyan-500/10 p-10 text-center flex flex-col items-center gap-4">
+              <span className="text-5xl">🎉</span>
+              <h3 className="text-white text-2xl font-bold">Заявка отправлена!</h3>
+              <p className="text-white/60">Мы свяжемся с вами в ближайшее время</p>
+              <button onClick={() => setFormState('idle')} className="mt-2 text-cyan-400 hover:text-cyan-300 text-sm underline underline-offset-4">
+                Отправить ещё одну заявку
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="rounded-3xl border border-white/10 bg-white/5 p-8 flex flex-col gap-5">
+              <div className="flex flex-col gap-2">
+                <label className="text-white/60 text-sm">Имя ребёнка и родителя *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Например: Иван Петров"
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  className="rounded-2xl bg-white/8 border border-white/15 px-5 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-cyan-500/60 transition-colors"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-white/60 text-sm">Телефон *</label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="+7 (___) ___-__-__"
+                  value={form.phone}
+                  onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                  className="rounded-2xl bg-white/8 border border-white/15 px-5 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-cyan-500/60 transition-colors"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-white/60 text-sm">Комментарий (необязательно)</label>
+                <textarea
+                  rows={3}
+                  placeholder="Возраст ребёнка, вопросы, пожелания..."
+                  value={form.comment}
+                  onChange={e => setForm(f => ({ ...f, comment: e.target.value }))}
+                  className="rounded-2xl bg-white/8 border border-white/15 px-5 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-cyan-500/60 transition-colors resize-none"
+                />
+              </div>
+              {formState === 'error' && (
+                <p className="text-red-400 text-sm text-center">Ошибка отправки. Попробуйте ещё раз или позвоните нам.</p>
+              )}
+              <button
+                type="submit"
+                disabled={formState === 'loading'}
+                className="rounded-full bg-cyan-500 py-4 text-lg font-semibold text-slate-900 hover:bg-cyan-400 transition-all shadow-2xl shadow-cyan-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {formState === 'loading' ? 'Отправляем...' : 'Отправить заявку'}
+              </button>
+              <p className="text-white/30 text-xs text-center">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+            </form>
+          )}
         </div>
       </section>
 
