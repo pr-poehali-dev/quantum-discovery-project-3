@@ -113,6 +113,13 @@ const prices = [
   },
 ]
 
+const extras = [
+  { icon: "🚌", title: "Трансфер", price: "5 000 ₽", desc: "Доставка из вашего города и обратно" },
+  { icon: "🛡️", title: "Страховка", price: "2 500 ₽", desc: "Медицинская страховка на весь период" },
+  { icon: "📸", title: "Фотосессия", price: "5 000 ₽", desc: "Профессиональная съёмка воспоминаний" },
+  { icon: "⭐", title: "VIP экскурсии", price: "10 000 ₽", desc: "Эксклюзивные маршруты с гидом" },
+]
+
 const Index = () => {
   const [activePhoto, setActivePhoto] = useState<string | null>(null)
 
@@ -303,6 +310,28 @@ const Index = () => {
                 >
                   Забронировать
                 </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== EXTRAS ========== */}
+      <section className="relative bg-slate-950 py-16 px-5">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-cyan-400 text-sm font-semibold uppercase tracking-widest">По желанию</span>
+            <h2 className="text-3xl font-bold text-white mt-2">Дополнительные опции</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {extras.map((extra) => (
+              <div key={extra.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-3 hover:border-cyan-500/40 hover:bg-white/8 transition-all">
+                <span className="text-3xl">{extra.icon}</span>
+                <div>
+                  <h3 className="text-white font-semibold">{extra.title}</h3>
+                  <p className="text-white/50 text-sm mt-1">{extra.desc}</p>
+                </div>
+                <p className="text-cyan-400 font-bold text-lg mt-auto">+ {extra.price}</p>
               </div>
             ))}
           </div>
