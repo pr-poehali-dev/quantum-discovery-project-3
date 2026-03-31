@@ -29,8 +29,14 @@ const Index = () => {
     <main className="relative min-h-screen overflow-hidden">
       <Navbar />
 
-      {/* Animated Gradient Background */}
-      <div className="fixed inset-0 w-full h-full flex items-center justify-center">
+      {/* Photo Background */}
+      <div
+        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('https://cdn.poehali.dev/projects/380b0771-046d-4bdc-9819-245ece75f2d8/bucket/484d856f-3512-4dd6-ada2-10bf3f767a0d.JPG')" }}
+      />
+      <div className="fixed inset-0 bg-black/45" />
+      {/* Animated Gradient Overlay */}
+      <div className="fixed inset-0 w-full h-full flex items-center justify-center mix-blend-multiply opacity-60">
         <GradientBlinds
           gradientColors={["#020d1a", "#043d5c", "#0e7490", "#0284c7", "#06b6d4"]}
           angle={12}
